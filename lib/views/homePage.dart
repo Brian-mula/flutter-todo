@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:river/logic/models/todos.dart';
 import 'package:river/logic/store/store.dart';
+import 'package:river/views/display.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,13 +16,19 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.only(top: 70, left: 10, right: 10),
-            padding: const EdgeInsets.only(right: 10, left: 10),
-            child: const Center(
-              child: Text(
-                "A todo Application",
-                style: TextStyle(fontSize: 20, color: Colors.black),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Display()));
+            },
+            child: Container(
+              margin: const EdgeInsets.only(top: 70, left: 10, right: 10),
+              padding: const EdgeInsets.only(right: 10, left: 10),
+              child: const Center(
+                child: Text(
+                  "A todo Application",
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
               ),
             ),
           ),

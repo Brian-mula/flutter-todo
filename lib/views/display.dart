@@ -11,17 +11,30 @@ class Display extends ConsumerWidget {
     final _todosProvider = ref.watch(todosProvider);
     return Scaffold(
       body: Container(
+          height: 100,
           margin: const EdgeInsets.only(top: 70, right: 10, left: 10),
           padding: const EdgeInsets.only(left: 10, right: 10),
-          child: ListView(
+          child: Column(
             children: [
               _todosProvider.when(
-                data: (data) => ListView.builder(itemBuilder: (context, index) {
-                  return Container();
-                }),
+                data: (data) => Container(
+                  height: 100,
+                  child: ListView.builder(
+                      itemCount: data.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          child: ListTile(
+                            title: Text(
+                              data[index].title,
+                            ),
+                            subtitle: Text(data[index].description),
+                          ),
+                        );
+                      }),
+                ),
                 error: (err, stack) => Text('Error: $err'),
                 loading: () => const CircularProgressIndicator(),
-              )
+              ),
             ],
           )),
     );

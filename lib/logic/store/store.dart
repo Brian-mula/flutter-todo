@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:river/logic/models/cart.dart';
 import 'package:river/logic/models/todos.dart';
 
 class Store {
